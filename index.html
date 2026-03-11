@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom Combet - Portfolio</title>
+    <meta name="description" content="Portfolio de Tom Combet - Alternant Management de SI & Développement">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader-content">
+            <div class="loader-logo">TC.</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Starfield Canvas -->
+    <canvas id="starfield-canvas"></canvas>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">TC<span class="accent">.</span></a>
+
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="nav-links">
+                <a href="#home" data-i18n="nav_home">Accueil</a>
+                <a href="#about" data-i18n="nav_about">À Propos</a>
+                <a href="#education" data-i18n="nav_education">Formation</a>
+                <a href="#experience" data-i18n="nav_experience">Expériences</a>
+                <a href="#skills" data-i18n="nav_skills">Compétences</a>
+                <a href="#projects" data-i18n="nav_projects">Projets</a>
+                <a href="#hobbies" data-i18n="nav_hobbies">Centres d'intérêt</a>
+
+                <div class="lang-switch">
+                    <button id="lang-fr" class="lang-btn active">FR</button>
+                    <span class="separator">|</span>
+                    <button id="lang-en" class="lang-btn">EN</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home / Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <p class="greeting" data-i18n="hero_greeting">Bonjour, je suis</p>
+                    <h1 class="name glitch-text" data-text="Tom Combet">Tom <span class="accent">Combet</span></h1>
+                    <h2 class="title" data-i18n="hero_title">Alternant Management de SI & Développement<span
+                            class="typing-cursor"></span></h2>
+                    <p class="subtitle" data-i18n="hero_subtitle">Passionné par les solutions ERP et le développement
+                        logiciel, spécialisé dans l'intégration Odoo.</p>
+
+                    <div class="hero-cta">
+                        <a href="new_cv_combet.pdf" class="btn btn-primary magnetic-btn" target="_blank"
+                            data-i18n="hero_cv_btn">Télécharger mon CV</a>
+                        <a href="#contact" class="btn btn-secondary magnetic-btn" data-i18n="hero_contact_btn">Me Contacter</a>
+                    </div>
+                </div>
+                <!-- Profile Image -->
+                <div class="hero-image-container animate-on-scroll">
+                    <img src="profile_neon.jpg" alt="Tom Combet" class="hero-profile-img">
+                </div>
+            </div>
+
+            <a href="#about" class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section pt-100">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-i18n="about_heading">À <span class="accent">Propos</span></h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="about-bento animate-on-scroll">
+                    <!-- Profile Card -->
+                    <div class="bento-card bento-profile">
+                        <div class="bento-profile-icon"><i class="fas fa-user-astronaut"></i></div>
+                        <h3 class="name" style="font-size: 1.8rem; margin-bottom: 0;">Tom Combet</h3>
+                        <p class="accent" style="font-size: 1rem; font-weight: 600; margin-top: 0.5rem;"
+                            data-i18n="hero_title">Alternant Management de SI & Développement</p>
+                    </div>
+
+                    <!-- Intro Card -->
+                    <div class="bento-card bento-intro">
+                        <div class="card-icon" style="margin-bottom: 1rem;"><i class="fas fa-quote-left accent"></i>
+                        </div>
+                        <p data-i18n="about_p1">Passionné par les solutions ERP, j'interviens sur des projets en tant
+                            que Chef de Projet ERP et Intégrateur Logiciel, me concentrant sur le paramétrage,
+                            l'intégration et la personnalisation pour répondre aux besoins des entreprises.</p>
+                        <p class="mt-2" data-i18n="about_p2">Mon objectif est de créer des outils qui améliorent les
+                            processus
+                            métiers tout en garantissant fiabilité et sécurité. Mon intérêt pour les jeux FPS met en
+                            évidence mes compétences d'analyse rapide et de travail en équipe, que j'applique aux
+                            projets académiques et professionnels.</p>
+                    </div>
+
+                    <!-- Skills Cards -->
+                    <div class="bento-card bento-stats">
+                        <div class="bento-stat-card">
+                            <div class="card-icon"><i class="fas fa-code"></i></div>
+                            <h3 data-i18n="about_card1_title">Intégration</h3>
+                            <p data-i18n="about_card1_desc" style="font-size: 0.9rem; color: var(--text-secondary);">
+                                Déploiement et personnalisation d'ERP.</p>
+                        </div>
+                        <div class="bento-stat-card">
+                            <div class="card-icon"><i class="fas fa-tasks"></i></div>
+                            <h3 data-i18n="about_card2_title">Gestion de Projet</h3>
+                            <p data-i18n="about_card2_desc" style="font-size: 0.9rem; color: var(--text-secondary);">
+                                Organisation et suivi rigoureux.</p>
+                        </div>
+                        <div class="bento-stat-card">
+                            <div class="card-icon"><i class="fas fa-cube"></i></div>
+                            <h3 data-i18n="about_card3_title">Développement Odoo</h3>
+                            <p data-i18n="about_card3_desc" style="font-size: 0.9rem; color: var(--text-secondary);">
+                                Création de modules sur mesure.</p>
+                        </div>
+                    </div>
+
+                    </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="education-section pt-100">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title" data-i18n="edu_heading">Parcours <span class="accent">Académique</span></h2>
+                    <div class="section-line mx-auto"></div>
+                </div>
+
+                <div class="education-grid">
+                    <!-- BUT -->
+                    <div class="education-card animate-on-scroll">
+                        <div class="education-header">
+                            <h3 class="education-title" data-i18n="edu_but_title">BUT Info "Intégration d'Applications et Management du système d'information"</h3>
+                            <span class="education-date">2023 - 2026</span>
+                            <h4 class="education-school">IUT Annecy | Annecy (74)</h4>
+                        </div>
+                        
+                        <!-- Système Solaire de Compétences -->
+                        <div class="skills-solar-system">
+                            <div class="sun">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <!-- Orbites et compétences -->
+                            <div class="orbit orbit-1">
+                                <div class="planet skill-planet" data-skill="Gestion de projet">
+                                    <i class="fas fa-project-diagram"></i>
+                                    <span class="skill-tooltip">Gestion de projet</span>
+                                </div>
+                            </div>
+                            <div class="orbit orbit-2">
+                                <div class="planet skill-planet" data-skill="ERP">
+                                    <i class="fas fa-cube"></i>
+                                    <span class="skill-tooltip">ERP</span>
+                                </div>
+                            </div>
+                            <div class="orbit orbit-3">
+                                <div class="planet skill-planet" data-skill="Base de données">
+                                    <i class="fas fa-database"></i>
+                                    <span class="skill-tooltip">Base de données</span>
+                                </div>
+                            </div>
+                            <div class="orbit orbit-4">
+                                <div class="planet skill-planet" data-skill="Réseau">
+                                    <i class="fas fa-network-wired"></i>
+                                    <span class="skill-tooltip">Réseau</span>
+                                </div>
+                            </div>
+                            <div class="orbit orbit-5">
+                                <div class="planet skill-planet" data-skill="Programmation/Web">
+                                    <i class="fas fa-code"></i>
+                                    <span class="skill-tooltip">Programmation/Web</span>
+                                </div>
+                            </div>
+                            <div class="orbit orbit-6">
+                                <div class="planet skill-planet" data-skill="Conception et modélisation">
+                                    <i class="fas fa-drafting-compass"></i>
+                                    <span class="skill-tooltip">Conception et modélisation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bac -->
+                    <div class="education-card animate-on-scroll">
+                        <div class="education-header">
+                            <h3 class="education-title" data-i18n="edu_bac_title">Bac STI2D spécialité ITEC (Mention Bien)</h3>
+                            <span class="education-date">2020 - 2023</span>
+                            <h4 class="education-school">Lycée René Cassin | Tarare (69)</h4>
+                        </div>
+                        
+                        <!-- Système Solaire de Compétences -->
+                        <div class="skills-solar-system">
+                            <div class="sun">
+                                <i class="fas fa-school"></i>
+                            </div>
+                            <!-- Orbites et compétences -->
+                            <div class="orbit orbit-1">
+                                <div class="planet skill-planet" data-skill="Conception assistée par ordinateur">
+                                    <i class="fas fa-desktop"></i>
+                                    <span class="skill-tooltip">Conception assistée par ordinateur</span>
+                                </div>
+                            </div>
+                            <div class="orbit orbit-2">
+                                <div class="planet skill-planet" data-skill="Maths">
+                                    <i class="fas fa-calculator"></i>
+                                    <span class="skill-tooltip">Maths</span>
+                                </div>
+                            </div>
+                            <div class="orbit orbit-3">
+                                <div class="planet skill-planet" data-skill="Physique">
+                                    <i class="fas fa-atom"></i>
+                                    <span class="skill-tooltip">Physique</span>
+                                </div>
+                            </div>
+                            <div class="orbit orbit-4">
+                                <div class="planet skill-planet" data-skill="Dimension mécanique">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span class="skill-tooltip">Dimension mécanique</span>
+                                </div>
+                            </div>
+                            <div class="orbit orbit-5">
+                                <div class="planet skill-planet" data-skill="Éco-conception">
+                                    <i class="fas fa-leaf"></i>
+                                    <span class="skill-tooltip">Éco-conception</span>
+                                </div>
+                            </div>
+                            <div class="orbit orbit-6">
+                                <div class="planet skill-planet" data-skill="Prototypage rapide">
+                                    <i class="fas fa-cube"></i>
+                                    <span class="skill-tooltip">Prototypage rapide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="timeline-section pt-100">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title" data-i18n="exp_heading">Expériences <span
+                            class="accent">Professionnelles</span></h2>
+                    <div class="section-line mx-auto"></div>
+                </div>
+
+                <div class="experience-timeline">
+                    <!-- Pure-Illusion -->
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-header-card">
+                                <div class="timeline-meta-top">
+                                    <h3 class="timeline-title" data-i18n="exp_title_1">Développeur/Intégrateur Odoo</h3>
+                                    <span class="timeline-date" data-i18n="exp_pi_date">Depuis Septembre
+                                        2025</span>
+                                </div>
+                                <h4 class="timeline-company" data-i18n="exp_company_1">Pure-Illusion | Annecy (74)</h4>
+                                <div class="timeline-expand-icon"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="timeline-details">
+                                <ul class="exp-tags-timeline">
+                                    <li data-i18n="exp_pi_task1">Développement de modules</li>
+                                    <li data-i18n="exp_pi_task2">Ticketing</li>
+                                    <li data-i18n="exp_pi_task3">Intégration</li>
+                                    <li data-i18n="exp_pi_task4">Gestion de projet</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Restauration Été 2025 -->
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-header-card">
+                                <div class="timeline-meta-top">
+                                    <h3 class="timeline-title" data-i18n="exp_summer_title">Commis de salle</h3>
+                                    <span class="timeline-date" data-i18n="exp_summer_2025_date">Été 2025</span>
+                                </div>
+                                <h4 class="timeline-company" data-i18n="exp_summer_2025_company">Osteria bella vista da Antonio e Marco | Lyon (69)</h4>
+                                <div class="timeline-expand-icon"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="timeline-details">
+                                <ul class="exp-tags-timeline">
+                                    <!-- Ajoutez vos tâches / détails ici -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bio&Lo -->
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-header-card">
+                                <div class="timeline-meta-top">
+                                    <h3 class="timeline-title" data-i18n="exp_title_2">Intégrateur Odoo</h3>
+                                    <span class="timeline-date" data-i18n="exp_bio_date">Avril 2025 – Juin
+                                        2025</span>
+                                </div>
+                                <h4 class="timeline-company" data-i18n="exp_company_2">Bio&Lo | Lyon (69)</h4>
+                                <div class="timeline-expand-icon"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="timeline-details">
+                                <ul class="exp-tags-timeline">
+                                    <li data-i18n="exp_bio_task1">Mise en place de modes opératoires</li>
+                                    <li data-i18n="exp_bio_task2">Gestion du suivi du stock via des imports générés à
+                                        partir de scripts python</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Restauration Été 2023 -->
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-header-card">
+                                <div class="timeline-meta-top">
+                                    <h3 class="timeline-title" data-i18n="exp_summer_title">Commis de salle</h3>
+                                    <span class="timeline-date" data-i18n="exp_summer_2023_date">Été 2023</span>
+                                </div>
+                                <h4 class="timeline-company" data-i18n="exp_summer_2023_company">La Feuillée | Theizé (69)</h4>
+                                <div class="timeline-expand-icon"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="timeline-details">
+                                <ul class="exp-tags-timeline">
+                                    <!-- Ajoutez vos tâches / détails ici -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cincinatti VR -->
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-header-card">
+                                <div class="timeline-meta-top">
+                                    <h3 class="timeline-title" data-i18n="exp_title_3">Modélisateur 3D (Stage)</h3>
+                                    <span class="timeline-date" data-i18n="exp_cincinatti_date">Octobre
+                                        2022</span>
+                                </div>
+                                <h4 class="timeline-company" data-i18n="exp_company_3">Cincinatti VR | Chambost-Allières
+                                    (69)</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inetech -->
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content-card">
+                            <div class="timeline-header-card">
+                                <div class="timeline-meta-top">
+                                    <h3 class="timeline-title" data-i18n="exp_title_4">Téchnicien réseau (Stage)</h3>
+                                    <span class="timeline-date" data-i18n="exp_inetech_date">Août 2021</span>
+                                </div>
+                                <h4 class="timeline-company" data-i18n="exp_company_4">Inetech | Lissieu (69)</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section pt-100">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title" data-i18n="skills_heading">Mes <span class="accent">Compétences</span></h2>
+                    <div class="section-line mx-auto"></div>
+                </div>
+
+                <!-- Filtres par catégorie -->
+                <div class="skills-filters">
+                    <button class="filter-btn active" data-filter="all" data-i18n="skills_filter_all">Tout</button>
+                    <button class="filter-btn" data-filter="programming" data-i18n="skills_filter_programming">Programmation</button>
+                    <button class="filter-btn" data-filter="database" data-i18n="skills_filter_database">Base de données</button>
+                    <button class="filter-btn" data-filter="network" data-i18n="skills_filter_network">Réseaux</button>
+                    <button class="filter-btn" data-filter="management" data-i18n="skills_filter_management">Gestion</button>
+                    <button class="filter-btn" data-filter="odoo" data-i18n="skills_filter_odoo">Odoo</button>
+                    <button class="filter-btn" data-filter="sap" data-i18n="skills_filter_sap">SAP</button>
+                    <button class="filter-btn" data-filter="powerplatform" data-i18n="skills_filter_powerplatform">Power Platform</button>
+                    <button class="filter-btn" data-filter="design" data-i18n="skills_filter_design">Conception</button>
+                    <button class="filter-btn" data-filter="languages" data-i18n="skills_filter_languages">Langues</button>
+                </div>
+
+                <!-- Nuage de compétences -->
+                <div class="skills-cloud">
+                    <!-- Programmation -->
+                    <span class="skill-tag programming" data-i18n="skill_python">Python</span>
+                    <span class="skill-tag programming" data-i18n="skill_javascript">JavaScript</span>
+                    <span class="skill-tag programming" data-i18n="skill_c">C#</span>
+                    <span class="skill-tag programming" data-i18n="skill_php">PHP</span>
+                    <span class="skill-tag programming" data-i18n="skill_html">HTML</span>
+                    <span class="skill-tag programming" data-i18n="skill_css">CSS</span>
+                    <span class="skill-tag programming" data-i18n="skill_typescript">TypeScript</span>
+                    <span class="skill-tag programming" data-i18n="skill_react">React</span>
+                    <span class="skill-tag programming" data-i18n="skill_unity">Unity</span>
+                    <span class="skill-tag programming" data-i18n="skill_wpf">WPF</span>
+                    
+                    <!-- Base de données -->
+                    <span class="skill-tag database" data-i18n="skill_postgresql">PostgreSQL</span>
+                    <span class="skill-tag database" data-i18n="skill_sql">SQL</span>
+                    <span class="skill-tag database" data-i18n="skill_grafana">Grafana</span>
+                    <span class="skill-tag database" data-i18n="skill_mongodb">MongoDB</span>
+                    
+                    <!-- Réseaux -->
+                    <span class="skill-tag network" data-i18n="skill_linux">Linux</span>
+                    <span class="skill-tag network" data-i18n="skill_windows">Windows</span>
+                    
+                    <!-- Gestion -->
+                    <span class="skill-tag management" data-i18n="skill_gestion_de_projet_cloud">Gestion de projet</span>
+                    <span class="skill-tag management" data-i18n="skill_methodes_agiles">Méthodes Agiles</span>
+                    <span class="skill-tag management" data-i18n="skill_modes_operatoires">Modes opératoires</span>
+                    
+                    <!-- Odoo -->
+
+                    <span class="skill-tag odoo" data-i18n="skill_developpement_de_modules">Développement de modules</span>
+                    <span class="skill-tag odoo" data-i18n="skill_ticketing_cloud">Ticketing</span>
+                    <span class="skill-tag odoo" data-i18n="skill_integration_cloud">Intégration</span>
+                    
+                    <!-- SAP -->
+
+                    <span class="skill-tag sap" data-i18n="skill_developpement">Développement</span>
+                    <span class="skill-tag sap" data-i18n="skill_integration_cloud">Intégration</span>
+                    
+                    <!-- Power Platform -->
+
+                    <span class="skill-tag powerplatform" data-i18n="skill_dynamics365">Dynamics365</span>
+                    <span class="skill-tag powerplatform" data-i18n="skill_powerpage">PowerPage</span>
+                    <span class="skill-tag powerplatform" data-i18n="skill_power_automate">Power Automate</span>
+                    <span class="skill-tag powerplatform" data-i18n="skill_power_bi">Power BI</span>
+                    <span class="skill-tag powerplatform" data-i18n="skill_power_apps">Power Apps</span>
+                    <span class="skill-tag dataverse" data-i18n="skill_dataverse">Dataverse</span>
+                    
+                    <!-- Conception -->
+                    <span class="skill-tag design" data-i18n="skill_uml_cloud">UML</span>
+                    <span class="skill-tag design" data-i18n="skill_archimate">Archimate</span>
+                    <span class="skill-tag design" data-i18n="skill_solidworks">SolidWorks</span>
+                    
+                    <!-- Langues -->
+                    <span class="skill-tag languages" data-i18n="skill_anglais_b1">Anglais (B1)</span>
+                    <span class="skill-tag languages" data-i18n="skill_espagnol_a2">Espagnol (A2)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section pt-100">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title" data-i18n="proj_heading">Mes <span class="accent">Projets</span></h2>
+                    <div class="section-line mx-auto"></div>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Connect 6 -->
+                    <div class="project-card glass-card animate-on-scroll">
+                        <div class="project-content">
+                            <div class="project-header">
+                                <i class="fas fa-gamepad project-icon"></i>
+                                <div class="project-links">
+                                    <a href="https://github.com/Ewadrel/Puissance6-WPF" target="_blank"
+                                        aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                            <h3 class="project-title">Connect 6</h3>
+                            <p class="project-desc" data-i18n="proj_c6_desc">Une version moderne de Puissance 4 qui
+                                défie les joueurs d'aligner 6 jetons. Avec un design élégant en WPF, le jeu propose des
+                                modes deux joueurs ou IA, des mécaniques de bonus et un chronomètre pour plus
+                                d'excitation.</p>
+                            <div class="project-tech">
+                                <span>C#</span>
+                                <span>WPF</span>
+                                <span data-i18n="proj_ai">IA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zombie Shooter -->
+                    <div class="project-card glass-card animate-on-scroll">
+                        <div class="project-content">
+                            <div class="project-header">
+                                <i class="fas fa-crosshairs project-icon"></i>
+                                <div class="project-links">
+                                    <a href="https://github.com/Ewadrel/Zombie-Shooter" target="_blank"
+                                        aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                            <h3 class="project-title">Zombie Shooter</h3>
+                            <p class="project-desc" data-i18n="proj_zs_desc">Un jeu de survie tendu où vous repoussez
+                                des zombies implacables avec des ressources limitées. Avec une IA dynamique et une
+                                atmosphère immersive, c'est un combat palpitant pour survivre à la nuit contre la horde.
+                            </p>
+                            <div class="project-tech">
+                                <span>Unity</span>
+                                <span>C#</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Badgeuse -->
+                    <div class="project-card glass-card animate-on-scroll">
+                        <div class="project-content">
+                            <div class="project-header">
+                                <i class="fas fa-id-badge project-icon"></i>
+                                <div class="project-links">
+                                    <a href="https://github.com/Ewadrel/Badgeuse" target="_blank"
+                                        aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                            <h3 class="project-title">Badgeuse</h3>
+                            <p class="project-desc" data-i18n="proj_badgeuse_desc">Application web de gestion de badgeage (pointage) permettant de suivre les entrées et sorties des employés.</p>
+                            <div class="project-tech">
+                                <span>TypeScript</span>
+                                <span>React</span>
+                                <span>Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hobbies Section -->
+        <section id="hobbies" class="hobbies-section pt-100">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title" data-i18n="hobbies_heading">Centres <span class="accent">d'intérêt</span>
+                    </h2>
+                    <div class="section-line mx-auto"></div>
+                </div>
+
+                <div class="hobbies-grid">
+                    <div class="hobby-card card-3d animate-on-scroll">
+                        <div class="card-3d-inner">
+                            <div class="hobby-icon"><i class="fas fa-dumbbell"></i></div>
+                            <h3 data-i18n="hobbies_gym">Musculation</h3>
+                            <p data-i18n="hobbies_gym_desc">Depuis 2 ans</p>
+                        </div>
+                    </div>
+
+                    <div class="hobby-card card-3d animate-on-scroll">
+                        <div class="card-3d-inner">
+                            <div class="hobby-icon"><i class="fas fa-gamepad"></i></div>
+                            <h3 data-i18n="hobbies_gaming">Jeux Vidéo</h3>
+                            <p data-i18n="hobbies_gaming_desc">FPS (Valorant, Overwatch, Marvel Rivals), Clash Royale</p>
+                        </div>
+                    </div>
+
+                    <div class="hobby-card card-3d animate-on-scroll">
+                        <div class="card-3d-inner">
+                            <div class="hobby-icon"><i class="fas fa-plane-departure"></i></div>
+                            <h3 data-i18n="hobbies_travel">Voyages</h3>
+                            <p data-i18n="hobbies_travel_desc">Etats-Unis, Pérou, Espagne, Italie, Royaume-Uni, Belgique,
+                                Tchéquie</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h3 data-i18n="contact_heading">Me Contacter</h3>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:tcombet07@gmail.com">tcombet07@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> 06 63 55 56 38</p>
+                <p><i class="fas fa-map-marker-alt"></i> 42 rue Vaugelas, Annecy, 74000</p>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/Ewadrel" target="_blank" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <!-- Add LinkedIn if available -->
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2026</span> Tom Combet | <span data-i18n="footer_rights">Tous droits
+                    réservés</span></p>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>
