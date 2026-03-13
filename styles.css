@@ -59,6 +59,247 @@ body {
 }
 
 /* ========================================================================= */
+/* PAGE LOADER */
+/* ========================================================================= */
+.page-loader {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at top, rgba(99, 102, 241, 0.18), transparent 45%),
+        radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.12), transparent 35%),
+        rgba(6, 6, 10, 0.96);
+    backdrop-filter: blur(14px);
+    z-index: 12000;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.page-loader::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+        radial-gradient(circle, rgba(165, 180, 252, 0.16) 1px, transparent 1px);
+    background-size: 120px 120px, 180px 180px;
+    background-position: 0 0, 40px 60px;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+.page-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-content {
+    position: relative;
+    width: min(90vw, 900px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.constellation-loader {
+    position: relative;
+    width: min(84vw, 760px);
+    aspect-ratio: 2.2 / 1;
+    filter: drop-shadow(0 0 38px rgba(99, 102, 241, 0.22));
+}
+
+.constellation-loader::before {
+    content: '';
+    position: absolute;
+    inset: 8% 4%;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, transparent 56%),
+        radial-gradient(circle at 70% 30%, rgba(6, 182, 212, 0.2) 0%, transparent 42%);
+    filter: blur(32px);
+    opacity: 0;
+    animation: loaderNebulaIn 1.8s ease 0.25s forwards;
+}
+
+.ambient-star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.68);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.22);
+    opacity: 0;
+    animation: ambientStarIn 1.2s ease forwards, ambientTwinkle 3.4s ease-in-out infinite;
+}
+
+.ambient-1 { top: 12%; left: 8%; animation-delay: 0.1s, 1.2s; }
+.ambient-2 { top: 12%; left: 38%; animation-delay: 0.2s, 1.5s; }
+.ambient-3 { top: 14%; left: 88%; animation-delay: 0.35s, 1.8s; }
+.ambient-4 { top: 26%; left: 18%; animation-delay: 0.45s, 1.1s; }
+.ambient-5 { top: 30%; left: 74%; animation-delay: 0.55s, 1.7s; }
+.ambient-6 { top: 36%; left: 92%; animation-delay: 0.7s, 1.3s; }
+.ambient-7 { top: 44%; left: 10%; animation-delay: 0.85s, 1.9s; }
+.ambient-8 { top: 58%; left: 18%; animation-delay: 0.95s, 1.4s; }
+.ambient-9 { top: 60%; left: 82%; animation-delay: 1.05s, 2s; }
+.ambient-10 { top: 60%; left: 88%; animation-delay: 1.15s, 1.6s; }
+.ambient-11 { top: 66%; left: 14%; animation-delay: 1.25s, 1.95s; }
+.ambient-12 { top: 78%; left: 30%; animation-delay: 1.35s, 1.35s; }
+.ambient-13 { top: 76%; left: 72%; animation-delay: 1.45s, 1.75s; }
+.ambient-14 { top: 78%; left: 80%; animation-delay: 1.55s, 2.1s; }
+.ambient-15 { top: 84%; left: 26%; animation-delay: 1.7s, 1.5s; }
+.ambient-16 { top: 86%; left: 94%; animation-delay: 1.85s, 2.2s; }
+
+.ambient-2,
+.ambient-8,
+.ambient-9,
+.ambient-12,
+.ambient-13 {
+    opacity: 0;
+    animation: ambientStarInSoft 1.2s ease forwards, ambientTwinkleSoft 4s ease-in-out infinite;
+}
+
+.constellation-star {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff 0%, #d8b4fe 45%, rgba(99, 102, 241, 0.85) 100%);
+    box-shadow:
+        0 0 12px rgba(255, 255, 255, 0.85),
+        0 0 26px rgba(99, 102, 241, 0.55),
+        0 0 48px rgba(6, 182, 212, 0.2);
+    opacity: 0;
+    --travel-x: 0px;
+    --travel-y: 0px;
+    --travel-scale: 0.35;
+    transform: translate(var(--travel-x), var(--travel-y)) scale(var(--travel-scale));
+    animation: constellationStar 1.25s cubic-bezier(0.22, 1, 0.36, 1) forwards, starPulse 3.6s ease-in-out infinite;
+}
+
+.star-t1 { top: 22%; left: 19%; --travel-x: -180px; --travel-y: -120px; animation-delay: 1.1s, 3.2s; }
+.star-t2 { top: 22%; left: 24%; --travel-x: -120px; --travel-y: -155px; animation-delay: 1.25s, 3.35s; }
+.star-t3 { top: 22%; left: 29%; --travel-x: -40px; --travel-y: -165px; animation-delay: 1.4s, 3.5s; }
+.star-t4 { top: 22%; left: 34%; --travel-x: 40px; --travel-y: -155px; animation-delay: 1.55s, 3.65s; }
+.star-t5 { top: 22%; left: 39%; --travel-x: 120px; --travel-y: -120px; animation-delay: 1.7s, 3.8s; }
+.star-t6 { top: 31%; left: 29%; --travel-x: -160px; --travel-y: -40px; animation-delay: 1.95s, 4s; }
+.star-t7 { top: 40%; left: 29%; --travel-x: -140px; --travel-y: 10px; animation-delay: 2.15s, 4.2s; }
+.star-t8 { top: 49%; left: 29%; --travel-x: 150px; --travel-y: -25px; animation-delay: 2.35s, 4.4s; }
+.star-t9 { top: 58%; left: 29%; --travel-x: -185px; --travel-y: 100px; animation-delay: 2.55s, 4.6s; }
+.star-t10 { top: 67%; left: 29%; --travel-x: 155px; --travel-y: 128px; animation-delay: 2.75s, 4.8s; }
+.star-t11 { top: 22%; left: 21.5%; width: 9px; height: 9px; --travel-x: -150px; --travel-y: -145px; animation-delay: 1.18s, 3.28s; }
+.star-t12 { top: 22%; left: 36.5%; width: 9px; height: 9px; --travel-x: 150px; --travel-y: -138px; animation-delay: 1.82s, 3.92s; }
+.star-c1 { top: 23%; left: 57%; --travel-x: 170px; --travel-y: -120px; animation-delay: 3.15s, 5.05s; }
+.star-c2 { top: 19%; left: 63%; --travel-x: 225px; --travel-y: -145px; animation-delay: 3.3s, 5.2s; }
+.star-c3 { top: 23%; left: 69%; --travel-x: 250px; --travel-y: -112px; animation-delay: 3.45s, 5.35s; }
+.star-c4 { top: 31%; left: 54%; --travel-x: 150px; --travel-y: -40px; animation-delay: 3.65s, 5.55s; }
+.star-c5 { top: 40%; left: 51%; --travel-x: 165px; --travel-y: 5px; animation-delay: 3.85s, 5.75s; }
+.star-c6 { top: 50%; left: 51%; --travel-x: 155px; --travel-y: 45px; animation-delay: 4.05s, 5.95s; }
+.star-c7 { top: 60%; left: 54%; --travel-x: 165px; --travel-y: 92px; animation-delay: 4.25s, 6.15s; }
+.star-c8 { top: 68%; left: 58%; --travel-x: 185px; --travel-y: 145px; animation-delay: 4.45s, 6.35s; }
+.star-c9 { top: 72%; left: 64%; --travel-x: 235px; --travel-y: 162px; animation-delay: 4.65s, 6.55s; }
+.star-c10 { top: 68%; left: 70%; --travel-x: 255px; --travel-y: 130px; animation-delay: 4.85s, 6.75s; }
+.star-c11 { top: 60%; left: 69%; width: 9px; height: 9px; --travel-x: 235px; --travel-y: 62px; animation-delay: 4.55s, 6.45s; }
+.star-dot { top: 62%; left: 80%; width: 12px; height: 12px; --travel-x: 145px; --travel-y: 40px; animation-delay: 5.3s, 7.2s; }
+.star-dot2 { top: 59%; left: 78.2%; width: 8px; height: 8px; --travel-x: 188px; --travel-y: 12px; animation-delay: 5.45s, 7.35s; }
+.star-dot3 { top: 65%; left: 81.7%; width: 8px; height: 8px; --travel-x: 175px; --travel-y: 76px; animation-delay: 5.6s, 7.5s; }
+
+@keyframes constellationStar {
+    0% {
+        opacity: 0;
+        transform: translate(var(--travel-x), var(--travel-y)) scale(var(--travel-scale));
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+@keyframes starPulse {
+    0%, 100% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.4);
+    }
+}
+
+@keyframes ambientStarIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 0.32;
+        transform: scale(1);
+    }
+}
+
+@keyframes ambientTwinkle {
+    0%, 100% {
+        opacity: 0.12;
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 0.38;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes ambientStarInSoft {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 0.18;
+        transform: scale(0.95);
+    }
+}
+
+@keyframes ambientTwinkleSoft {
+    0%, 100% {
+        opacity: 0.06;
+        transform: scale(0.88);
+    }
+
+    50% {
+        opacity: 0.18;
+        transform: scale(1);
+    }
+}
+
+@keyframes loaderNebulaIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.86);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 640px) {
+    .loader-content {
+        width: min(94vw, 460px);
+    }
+
+    .constellation-loader {
+        width: min(92vw, 540px);
+        aspect-ratio: 1.9 / 1;
+    }
+}
+
+/* ========================================================================= */
 /* PARTICLE CANVAS */
 /* ========================================================================= */
 #particles-canvas {
@@ -903,7 +1144,7 @@ section {
 /* EDUCATION SECTION */
 /* ========================================================================= */
 .education-section {
-    background: var(--bg-main);
+    background: transparent;
     position: relative;
     padding: 100px 0;
 }
@@ -1487,7 +1728,7 @@ section {
 /* SKILLS SECTION */
 /* ========================================================================= */
 .skills-section {
-    background: var(--bg-main);
+    background: transparent;
     position: relative;
 }
 
@@ -1685,7 +1926,7 @@ box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
 /* PROJECTS SECTION */
 /* ========================================================================= */
 .projects-section {
-    background: var(--bg-secondary);
+    background: transparent;
     position: relative;
 }
 
@@ -1697,7 +1938,7 @@ box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
     left: 0;
     width: 100%;
     height: 60px;
-    background: var(--bg-secondary);
+    background: transparent;
     clip-path: polygon(0 100%, 100% 0, 100% 100%);
 }
 
@@ -1965,7 +2206,8 @@ box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
 /* FOOTER */
 /* ========================================================================= */
 footer {
-    background: var(--bg-secondary);
+    background: rgba(13, 13, 20, 0.45);
+    backdrop-filter: blur(6px);
     border-top: 1px solid var(--border-color);
     padding: 4rem 0 2rem;
     position: relative;

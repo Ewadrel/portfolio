@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
     if (loader) {
         setTimeout(() => {
             loader.classList.add('hidden');
-        }, 1500);
+        }, 10500);
     }
 });
 
@@ -372,7 +372,7 @@ const translations = {
         hero_greeting: "Bonjour, je suis",
         hero_title: "Alternant Management de SI & Développement",
         hero_subtitle: "Passionné par les solutions ERP et le développement logiciel, spécialisé dans l'intégration et la gestion de projet.",
-        hero_cv_btn: "Télécharger mon CV",
+        hero_cv_btn: "Voir mon CV",
         hero_contact_btn: "Me Contacter",
 
         // About
@@ -531,7 +531,7 @@ const translations = {
         hero_greeting: "Hi, I am",
         hero_title: "Work-Study Student in IT Systems Management & Development",
         hero_subtitle: "Passionate about ERP solutions and software development, specializing in Odoo integration.",
-        hero_cv_btn: "Download Resume",
+        hero_cv_btn: "View My Resume",
         hero_contact_btn: "Contact Me",
 
         // About
@@ -829,26 +829,8 @@ function initSolarSystemSkills() {
                 // Hide tooltip
                 tooltip.classList.remove('active');
             });
-            
-            planet.addEventListener('click', function() {
-                // Pulse animation on click
-                this.style.animation = 'none';
-                setTimeout(() => {
-                    this.style.animation = 'planetPulse 0.6s ease';
-                }, 10);
-            });
         });
-        
-        // Add planet pulse animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes planetPulse {
-                0% { transform: translateX(-50%) scale(1); }
-                50% { transform: translateX(-50%) scale(1.5); }
-                100% { transform: translateX(-50%) scale(1); }
-            }
-        `;
-        document.head.appendChild(style);
+
     }, 100); // Petit délai pour s'assurer que tout est chargé
 }
 
